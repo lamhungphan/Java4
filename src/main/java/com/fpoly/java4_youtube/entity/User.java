@@ -37,5 +37,4 @@ public class User {
 
     @Column(name = "isActive")
     private Boolean isActive;
-
 }

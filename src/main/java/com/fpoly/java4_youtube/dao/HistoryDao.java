@@ -6,9 +6,15 @@ import java.util.List;
 
 
 public interface HistoryDao {
-	List<History> findByUser(String username);
-	List<History> findByUserAndIsLiked(String username);
-	List<History> findByUserAndVideoId(Integer userId, Integer videoId);
-	History create(History entity);
-	History update(History entity);
+    // Cac video username da xem
+    List<History> findByUser(String username);
+
+    // Cac video username da xem va like
+    List<History> findByUserAndIsLiked(String username);
+
+    History findByUserAndVideoId(Integer userId, Integer videoId);
+
+    History create(History entity);
+
+    History update(History entity);
 }
