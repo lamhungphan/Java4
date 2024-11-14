@@ -18,5 +18,5 @@ public interface VideoDao {
 
     Video update(Video entity);
 
-    Video delete(Video entity);
+    Video delete(String href);
 }

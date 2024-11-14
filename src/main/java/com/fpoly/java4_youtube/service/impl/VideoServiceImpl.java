@@ -1,6 +1,8 @@
 package com.fpoly.java4_youtube.service.impl;
 
 
+import com.fpoly.java4_youtube.dao.VideoDao;
+import com.fpoly.java4_youtube.dao.impl.VideoDaoImpl;
 import com.fpoly.java4_youtube.entity.Video;
 import com.fpoly.java4_youtube.service.VideoService;
 
@@ -8,38 +10,50 @@ import java.util.List;
 
 public class VideoServiceImpl implements VideoService {
 
+    private VideoDao dao;
+
+    public VideoServiceImpl(){
+        dao = new VideoDaoImpl();
+    }
+
     @Override
     public Video findById(Integer id) {
-        return null;
+        return dao.findById(id);
     }
 
     @Override
     public Video finByHref(String href) {
-        return null;
+        return dao.findByHref(href);
     }
 
     @Override
     public List<Video> findAll() {
-        return null;
+        return dao.findAll();
     }
 
     @Override
     public List<Video> findAll(int pageNumber, int pageSize) {
-        return null;
+        return dao.findAll(pageNumber, pageSize);
     }
 
     @Override
     public Video create(Video entity) {
-        return null;
+        // Co the xu li bang annotations trong Entity
+        entity.setIsActive(Boolean.TRUE);
+        entity.setViews(0);
+        entity.setShares(0);
+        return dao.create(entity);
     }
 
     @Override
     public Video update(Video entity) {
-        return null;
+        return dao.update(entity);
     }
 
     @Override
-    public Video delete(String href) {
-        return null;
+    public Video delete(String href) { // thuc te co the se khong duoc dung ID => dung unique field khac
+        Video entity = finByHref(href);
+        entity.setIsActive(Boolean.FALSE);
+        return dao.update(entity);
     }
 }
