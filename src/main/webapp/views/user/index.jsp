@@ -52,33 +52,39 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-xl-3 col-sm-6 mb-3">
-                        <div class="video-card">
-                            <div class="video-card-image">
-                                <a class="play-icon" href="#"><i class="fas fa-play-circle"></i></a>
-                                <a href="#"><img class="img-fluid" src="<c:url value='/templates/user/img/shape-of-you.jpg'/>"
-                                                 alt=""></a>
-                            </div>
-                            <div class="video-card-body">
-                                <div class="video-title">
-                                    <a href="#">There are many variations of passages of Lorem</a>
+                        <c:forEach items="${videos}" var="video">
+                            <div class="video-card">
+                                <div class="video-card-image">
+                                    <a href="#">
+                                        <img class="img-fluid"
+                                             src="<c:url value='/templates/user/img/shape-of-you.jpg'/>" alt=""></a>
                                 </div>
-                                <button class="btn-success">Like</button>
-                                <button class="btn-primary">Share</button>
+                                <div class="video-card-body">
+                                    <div class="video-title">
+                                        <h3>${video.title}</h3>
+                                    </div>
+                                    <button class="btn-success">Like</button>
+                                    <button class="btn-primary">Share</button>
+                                </div>
                             </div>
-                        </div>
+<%--                                <iframe width="600" height="350" src="https://www.youtube.com/embed/${video.href}"--%>
+<%--                                        title="${video.title}"--%>
+<%--                                        frameborder="0"--%>
+<%--                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"--%>
+<%--                                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>--%>
+<%--                                </iframe>--%>
+                        </c:forEach>
                     </div>
-
-                    <nav aria-label="Page navigation">
-                        <ul class="pagination justify-content-center pagination-sm mb-0">
-                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                        </ul>
-                    </nav>
+                    <%--                    <nav aria-label="Page navigation">--%>
+                    <%--                        <ul class="pagination justify-content-center pagination-sm mb-0">--%>
+                    <%--                            <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">Previous</a></li>--%>
+                    <%--                            <li class="page-item active"><a class="page-link" href="#">1</a></li>--%>
+                    <%--                            <li class="page-item"><a class="page-link" href="#">2</a></li>--%>
+                    <%--                            <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+                    <%--                            <li class="page-item"><a class="page-link" href="#">Next</a></li>--%>
+                    <%--                        </ul>--%>
+                    <%--                    </nav>--%>
                 </div>
             </div>
         </main>

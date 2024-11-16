@@ -29,8 +29,8 @@ public class AbstractDao<EntityType> {
         // SELECT o FROM entity o WHERE isActive = 1;
         sql.append("SELECT o FROM ").append(entityName).append(" o");
 
-        if (existIsActive == true) {
-            sql.append(" WHERE isActive = 1");
+        if (existIsActive) {
+            sql.append(" WHERE isActive = true");
         }
         TypedQuery<EntityType> query = entityManager.createQuery(sql.toString(), clazz);
         return query.getResultList();
@@ -40,8 +40,8 @@ public class AbstractDao<EntityType> {
         String entityName = clazz.getSimpleName();
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT o FROM ").append(entityName).append(" o");
-        if (existIsActive == true) {
-            sql.append(" WHERE isActive = 1");
+        if (existIsActive) {
+            sql.append(" WHERE isActive = true");
         }
         TypedQuery<EntityType> query = entityManager.createQuery(sql.toString(), clazz);
         query.setFirstResult((pageNumber - 1) * pageSize);
