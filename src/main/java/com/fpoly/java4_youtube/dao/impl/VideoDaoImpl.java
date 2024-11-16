@@ -30,4 +30,9 @@ public class VideoDaoImpl extends AbstractDao<Video> implements VideoDao {
         return super.findAll(Video.class, true, pageNumber, pageSize);
     }
 
+    @Override
+    public Video delete(String href) {
+        return null;
+    }
+
 }
