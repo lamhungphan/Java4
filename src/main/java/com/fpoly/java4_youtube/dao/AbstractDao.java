@@ -52,7 +52,7 @@ public class AbstractDao<EntityType> {
     public EntityType findOne(Class<EntityType> clazz, String sql, Object... params) {
         TypedQuery<EntityType> query = entityManager.createQuery(sql, clazz);
         for (int i = 0; i < params.length; i++) {
-            query.setParameter(i, params[i]);
+            query.setParameter(i +1, params[i]);
         }
         List<EntityType> result = query.getResultList();
         if (result.isEmpty()) {
