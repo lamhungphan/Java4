@@ -17,13 +17,10 @@ import jakarta.servlet.http.HttpServletResponse;
 public class HomeServlet extends HttpServlet {
     private VideoService videoService = new VideoServiceImpl();
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Video> videos = videoService.findAll();
-        request.setAttribute("videos", videos);
-        request.getRequestDispatcher("/views/user/index.jsp").forward(request, response);
+        req.setAttribute("videos", videos);
+        req.getRequestDispatcher("/views/user/index.jsp").forward(req, resp);
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doGet(request, response);
-    }
 }

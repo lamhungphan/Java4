@@ -16,15 +16,15 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "'user'")
+@Table(name = "user")
 public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "userame")
-    private String userame;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;

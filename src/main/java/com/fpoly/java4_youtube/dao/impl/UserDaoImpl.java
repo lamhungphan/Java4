@@ -15,19 +15,19 @@ public class UserDaoImpl extends AbstractDao<User> implements UserDao {
 
     @Override
     public User findByEmail(String email) {
-        String sql = "SELECT o FROM User WHERE o.email = ?0";
+        String sql = "SELECT o FROM User o WHERE o.email = ?1";
         return super.findOne(User.class, sql, email);
     }
 
     @Override
     public User findByUserName(String username) {
-        String sql = "SELECT o FROM User WHERE o.username = ?0";
+        String sql = "SELECT o FROM User o WHERE o.username = ?1";
         return super.findOne(User.class, sql, username);
     }
 
     @Override
     public User findByUsernameAndPassword(String username, String password) {
-        String sql = "SELECT o FROM User WHERE o.username = ?0 AND o.password = ?1";
+        String sql = "SELECT o FROM User o WHERE o.username = ?1 AND o.password = ?2";
         return super.findOne(User.class, sql, username, password);
     }
 
