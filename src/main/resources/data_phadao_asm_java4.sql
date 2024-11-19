@@ -1,4 +1,3 @@
--- Xóa database nếu đã tồn tại và tạo database mới
 DROP DATABASE IF EXISTS java4_asm;
 CREATE DATABASE java4_asm;
 USE java4_asm;

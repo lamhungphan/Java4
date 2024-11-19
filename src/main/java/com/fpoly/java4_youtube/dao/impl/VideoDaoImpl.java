@@ -16,7 +16,7 @@ public class VideoDaoImpl extends AbstractDao<Video> implements VideoDao {
 
     @Override
     public Video findByHref(String href) {
-        String sql = "SELECT o FROM Video o WHERE o.href = ?0";
+        String sql = "SELECT o FROM Video o WHERE o.href = ?1";
         return super.findOne(Video.class, sql, href);
     }
 

@@ -10,27 +10,7 @@
 <body>
 <%@include file="/common/header.jsp" %>
 <div class="container-fluid row p-0 m-0">
-    <div class="nav nav-pills bg-dark flex-column col-md-2 p-0 sticky-top" style="max-height: 100vh;">
-        <li class="nav-item">
-            <a class="nav-link text-white rounded-0 ${view=='/main/detailVideo.jsp'?'active':''}"
-               href="${root}/video">
-                Videos
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white rounded-0 ${view=='/main/likeVideo.jsp'?'active':''}"
-               href="${root}/like">
-                My Favorite
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-white rounded-0 ${view=='/main/shareVideo.jsp'?'active':''}"
-               href="${root}/share">
-                Share Video
-            </a>
-        </li>
-    </div>
-
+    <%@include file="/common/sidebar.jsp" %>
     <div class="col-md-10 p-2">
         <main class="pb-2" style="min-height: 93vh">
             <div class="video-block section-padding">
@@ -38,7 +18,8 @@
                     <div class="col-md-12">
                         <div class="main-title">
                             <div class="btn-group float-right right-action">
-                                <a href="#" class="right-action-link text-gray" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <a href="#" class="right-action-link text-gray" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
                                     Sort by <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
@@ -52,8 +33,8 @@
                         <div class="col-xl-4 col-sm-6 mb-3">
                             <div class="video-card">
                                 <div class="video-card-image">
-                                    <a href="#">
-                                        <img class="img-fluid" src="<c:url value='/templates/user/img/shape-of-you.jpg'/>" alt="">
+                                    <a href="<c:url value='/video?action=watch&id=${video.href}' />">
+                                        <img class="img-fluid" src="${pageContext.request.contextPath}/templates/user/img/shape-of-you.jpg" alt=""/>
                                     </a>
                                 </div>
                                 <div class="video-card-body">

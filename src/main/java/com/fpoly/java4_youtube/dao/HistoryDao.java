@@ -12,7 +12,7 @@ public interface HistoryDao {
     // Cac video username da xem va like
     List<History> findByUserAndIsLiked(String username);
 
-    History findByUserAndVideoId(Integer userId, Integer videoId);
+    History findByUserIdAndVideoId(Integer userId, Integer videoId);
 
     History create(History entity);
 
