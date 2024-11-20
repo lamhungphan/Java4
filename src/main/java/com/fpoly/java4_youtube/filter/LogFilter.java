@@ -28,6 +28,7 @@ public class LogFilter implements Filter {
         User loggedUser = getLoggedUser(req);
         Log log = configLog(loggedUser.getEmail(), req);
         logService.save(log);
+        chain.doFilter(req, resp);
     }
 
     public Log configLog(String mail, HttpServletRequest request) {

@@ -9,8 +9,7 @@
 </head>
 <body>
 <%@include file="/common/header.jsp" %>
-<div class="container-fluid row p-0 m-0">
-    <%@include file="/common/sidebar.jsp" %>
+<div class="container-fluid p-0 m-0">
     <!-- Video Section -->
     <div class="row p-4">
         <div class="col-md-8">
@@ -22,9 +21,18 @@
                 </div>
                 <div class="single-video-title box mb-3">
                     <h2><a href="#">${video.title}</a></h2>
-                    <p class="mb-0"><i class="fas fa-eye"></i> (param) views</p>
-                    <button class="btn-success">Like</button>
-                    <button class="btn-primary">Share</button>
+                    <p class="mb-0"><i class="fas fa-eye"></i> 0 view</p>
+                    <c:if test="${not empty sessionScope.currentUser}">
+                        <button class="btn-success" id="likeBtn">
+                            <a href="<c:url value='/video?action=like&id=${video.href}'/>">
+                                <c:choose>
+                                    <c:when test="${flagLikedBtn == true}">Unlike</c:when>
+                                    <c:otherwise>Like</c:otherwise>
+                                </c:choose>
+                            </a>
+                        </button>
+                        <button class="btn-primary" share="shareBtn">Share</button>
+                    </c:if>
                 </div>
                 <div class="single-video-info-content box mb-3">
                     <h6>Description</h6>
@@ -143,9 +151,28 @@
                 </div>
             </div>
         </div>
+        <input id="videoIdHdn" type="hidden" value="${video.href}">
     </div>
 </div>
 
 <%@include file="/common/footer.jsp" %>
+<script>
+    $('#likeBtn').click(function () {
+        var videoId = $('#videoIdHdn').val();
+        $.ajax({
+            url: 'video?action=like&id=' + videoId
+        }).then(function (data) {
+            var text = $('#likeBtn').text();
+            if (text.indexOf('Like') !== -1) {
+                $('#likeBtn').text('Unlike');
+            } else {
+                $('#likeBtn').text('Like');
+            }
+        }).fail(function (error) {
+            alert('please try again, fail case');
+        });
+    });
+
+</script>
 </body>
 </html>

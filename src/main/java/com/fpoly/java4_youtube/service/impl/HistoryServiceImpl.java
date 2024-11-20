@@ -36,11 +36,18 @@ public class HistoryServiceImpl implements HistoryService {
 
     @Override
     public History create(User user, Video video) {
-        History history = new History();
-        history.setUser(user);
-        history.setVideo(video);
-        history.setIsLiked(Boolean.FALSE);
-        return dao.create(history);
+        if (video == null) {
+            throw new IllegalArgumentException("Video cannot be null");
+        }
+        History existedHistory = findByUserIdAndVideoId(user.getId(), video.getId());
+        if (existedHistory == null) {
+            existedHistory = new History();
+            existedHistory.setUser(user);
+            existedHistory.setVideo(video);
+            existedHistory.setIsLiked(Boolean.FALSE);
+            return dao.create(existedHistory);
+        }
+        return existedHistory;
     }
 
     @Override
@@ -53,9 +60,9 @@ public class HistoryServiceImpl implements HistoryService {
             existedHistory.setLikedDate(new Timestamp(System.currentTimeMillis()));
         } else {
             existedHistory.setIsLiked(Boolean.FALSE);
-            existedHistory.setIsLiked(null);
+            existedHistory.setLikedDate(null);
         }
         History updateHistory = dao.update(existedHistory);
-        return updateHistory != null ? true : false;
+        return updateHistory != null;
     }
 }

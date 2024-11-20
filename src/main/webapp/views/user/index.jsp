@@ -9,9 +9,8 @@
 </head>
 <body>
 <%@include file="/common/header.jsp" %>
-<div class="container-fluid row p-0 m-0">
-    <%@include file="/common/sidebar.jsp" %>
-    <div class="col-md-10 p-2">
+<div class="container-fluid p-0 m-0">
+    <div class="col-md-12 p-2">
         <main class="pb-2" style="min-height: 93vh">
             <div class="video-block section-padding">
                 <div class="row">
