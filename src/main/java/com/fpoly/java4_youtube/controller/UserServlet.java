@@ -69,8 +69,10 @@ public class UserServlet extends HttpServlet {
 
         if (user != null) {
             session.setAttribute(SessionAttribute.CURRENT_USER, user);
+            session.setAttribute("role", user.getIsAdmin()); // Lưu thêm vai trò của user
             resp.sendRedirect("index");
         } else {
+            req.setAttribute("error", "Invalid username or password");
             resp.sendRedirect("login");
         }
     }
@@ -84,8 +86,10 @@ public class UserServlet extends HttpServlet {
 
         if (user != null) {
             session.setAttribute(SessionAttribute.CURRENT_USER, user);
+            session.setAttribute("role", user.getIsAdmin());
             resp.sendRedirect("login");
         } else {
+            req.setAttribute("error", "Registration failed. Try again.");
             resp.sendRedirect("register");
         }
     }

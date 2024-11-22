@@ -70,8 +70,8 @@ public class AbstractDao<EntityType> {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Object[]> findManyByNativeQuery(Class<EntityType> clazz, String sql, Object... params) {
-        Query query = entityManager.createNativeQuery(sql, clazz);
+    public List<Object[]> findManyByNativeQuery( String sql, Object... params) {
+        Query query = entityManager.createNativeQuery(sql);
         for (int i = 0; i < params.length; i++) {
             query.setParameter(i, params[i]);
         }

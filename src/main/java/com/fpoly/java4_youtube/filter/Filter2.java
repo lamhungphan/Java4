@@ -5,7 +5,6 @@ import jakarta.servlet.annotation.WebFilter;
 
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {""})
 public class Filter2 implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

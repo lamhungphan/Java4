@@ -40,8 +40,8 @@
                                     <div class="video-title">
                                         <h3>${video.title}</h3>
                                     </div>
-                                    <button class="btn btn-success">Like</button>
-                                    <button class="btn btn-primary">Share</button>
+                                    <button class="btn btn-success" onclick="handleLike()">Like</button>
+                                    <button class="btn btn-primary" onclick="handleShare()">Share</button>
                                 </div>
                             </div>
                         </div>
@@ -65,5 +65,39 @@
 </div>
 
 <%@include file="/common/footer.jsp" %>
+<script>
+    function handleLike() {
+        checkLoginStatus('Like');
+    }
+
+    function handleShare() {
+        checkLoginStatus('Share');
+    }
+
+    function checkLoginStatus(action) {
+        const isLoggedIn = <%= session.getAttribute("user") != null %>;
+
+        if (isLoggedIn) {
+            Swal.fire({
+                icon: 'success',
+                title: `You choose ${action}`,
+                showConfirmButton: false,
+                timer: 1500
+            });
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'You have to login to use these feature',
+                text: 'Please login or register',
+                confirmButtonText: 'Log in'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = '<c:url value="/login" />';
+                }
+            });
+        }
+    }
+</script>
+
 </body>
 </html>

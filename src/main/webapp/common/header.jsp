@@ -40,6 +40,11 @@
             <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="userDropdown">
                 <c:choose>
                     <c:when test="${not empty sessionScope.currentUser}">
+                        <c:if test="${sessionScope.currentUser.isAdmin == true}">
+                            <a class="dropdown-item" href="<c:url value='/admin/dashboard'/>">
+                                <i class="fas fa-fw fa-cog"></i> &nbsp; Admin Page
+                            </a>
+                        </c:if>
                         <a class="dropdown-item" href="account">
                             <i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account
                         </a>

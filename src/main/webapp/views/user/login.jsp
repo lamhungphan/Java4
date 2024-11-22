@@ -13,6 +13,9 @@
 <div class="container-fluid row p-0 m-0">
     <div class="container mt-5 col-4 align-content-center">
         <h3>Login</h3>
+        <c:if test="${not empty error}">
+            <p class="error">${error}</p>
+        </c:if>
         <form action="login" method="post">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
