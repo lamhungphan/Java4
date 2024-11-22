@@ -4,19 +4,20 @@
         <img class="img-fluid" alt="" src="<c:url value='/templates/user/img/netflix-icon.png'/>"
              width="50px">
     </a>
-    <ul class="list-unstyled d-flex flex-row align-items-center">
-        <li class="nav-item">
-            <a class="nav-link text-white rounded-0"
-               href="#">
+    <ul class="list-unstyled d-flex flex-row align-items-center mb-0">
+        <!-- Mục My Favorite -->
+        <li class="nav-item me-4"> <!-- Thêm lớp me-4 để tạo khoảng cách -->
+            <a class="nav-link text-white rounded-0" href="#">
                 My Favorite
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link text-white rounded-0 "
-               href="#">
+        <!-- Mục Share Video -->
+        <li class="nav-item me-4"> <!-- Thêm lớp me-4 để tạo khoảng cách -->
+            <a class="nav-link text-white rounded-0" href="#">
                 Share Video
             </a>
         </li>
+        <!-- Mục Visitor Count -->
         <li class="nav-item text-white rounded-0">Visitor count: ${applicationScope.visitors}</li>
     </ul>
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0 osahan-navbar-search">
@@ -42,14 +43,14 @@
                     <c:when test="${not empty sessionScope.currentUser}">
                         <c:if test="${sessionScope.currentUser.isAdmin == true}">
                             <a class="dropdown-item" href="<c:url value='/admin/dashboard'/>">
-                                <i class="fas fa-fw fa-cog"></i> &nbsp; Admin Page
+                                <i class="fa-solid fa-film"></i> &nbsp; Admin Page
                             </a>
                         </c:if>
-                        <a class="dropdown-item" href="account">
-                            <i class="fas fa-fw fa-user-circle"></i> &nbsp; My Account
+                        <a class="dropdown-item" href="<c:url value='/updateAccount'/>">
+                            <i class="fa-solid fa-user"></i> &nbsp; My Account
                         </a>
-                        <a class="dropdown-item" href="changePass">
-                            <i class="fas fa-fw fa-cog"></i> &nbsp; Change password
+                        <a class="dropdown-item" href="<c:url value='/changePass'/>">
+                            <i class="fa-solid fa-lock"></i>&nbsp; Change password
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<c:url value='/logout'/>" data-toggle="modal"
@@ -58,14 +59,15 @@
                         </a>
                     </c:when>
                     <c:otherwise>
-                        <a class="dropdown-item" href="forgotPass">
-                            <i class="fas fa-fw fa-cog"></i> &nbsp; Forgot password
+                        <a class="dropdown-item" href="<c:url value='/forgotPass'/>">
+                            <i class="fa-solid fa-envelope"></i> Forgot password
                         </a>
                         <a class="dropdown-item" href="<c:url value='/register'/>">
-                            <i class="fas fa-fw fa-cog"></i> &nbsp; Register
+                            <i class="fa-solid fa-fingerprint"></i> Register
                         </a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="${pageContext.request.contextPath}/login">
-                            <i class="fas fa-fw fa-cog"> </i> &nbsp; Login
+                            <i class="fa-solid fa-right-to-bracket"></i> Login
                         </a>
                     </c:otherwise>
                 </c:choose>

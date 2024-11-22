@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet( {"/login", "/logout", "/register"})
+@WebServlet({"/login", "/logout", "/register", "/changePass", "/forgotPass", "/updateAccount"})
 public class UserServlet extends HttpServlet {
     private UserService userService = new UserServiceImpl();
 
@@ -30,6 +30,15 @@ public class UserServlet extends HttpServlet {
                 break;
             case "/logout":
                 doGetLogout(session, req, resp);
+                break;
+            case "/changePass":
+                doGetChangePass(session, req, resp);
+                break;
+            case "/forgotPass":
+                doGetForgotPass(session, req, resp);
+                break;
+            case "/updateAccount":
+                doGetUpdateAccount(session, req, resp);
                 break;
         }
     }
@@ -59,6 +68,18 @@ public class UserServlet extends HttpServlet {
     private void doGetLogout(HttpSession session, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         session.removeAttribute(SessionAttribute.CURRENT_USER);
         resp.sendRedirect("index");
+    }
+
+    private void doGetChangePass(HttpSession session, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/views/user/change-password.jsp").forward(req, resp);
+    }
+
+    private void doGetForgotPass(HttpSession session, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/views/user/forgot-password.jsp").forward(req, resp);
+    }
+
+    private void doGetUpdateAccount(HttpSession session, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/views/user/change-info.jsp").forward(req, resp);
     }
 
     private void doPostLogin(HttpSession session, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
