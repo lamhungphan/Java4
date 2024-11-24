@@ -9,9 +9,11 @@ import java.util.List;
 
 public class UserServiceImpl implements UserService {
     private UserDao dao;
-    public UserServiceImpl(){
+
+    public UserServiceImpl() {
         dao = new UserDaoImpl();
     }
+
     @Override
     public User findById(Integer id) {
         return dao.findById(id);
@@ -34,6 +36,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User resetPassword(String email) {
+        User existUser = findByEmail(email);
+        if (existUser != null) {
+            String newPass = String.valueOf((int) (Math.random() * ((9999 - 1000) + 1)) + 1000);
+            existUser.setPassword(newPass);
+            return dao.update(existUser);
+        }
         return null;
     }
 

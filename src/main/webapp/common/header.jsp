@@ -5,19 +5,16 @@
              width="50px">
     </a>
     <ul class="list-unstyled d-flex flex-row align-items-center mb-0">
-        <!-- Mục My Favorite -->
-        <li class="nav-item me-4"> <!-- Thêm lớp me-4 để tạo khoảng cách -->
-            <a class="nav-link text-white rounded-0" href="#">
+        <li class="nav-item me-4">
+            <a class="nav-link text-white rounded-0" href="<c:url value='/favorite'/>">
                 My Favorite
             </a>
         </li>
-        <!-- Mục Share Video -->
-        <li class="nav-item me-4"> <!-- Thêm lớp me-4 để tạo khoảng cách -->
-            <a class="nav-link text-white rounded-0" href="#">
+        <li class="nav-item me-4">
+            <a class="nav-link text-white rounded-0" href="<c:url value='/history'/>">
                 Share Video
             </a>
         </li>
-        <!-- Mục Visitor Count -->
         <li class="nav-item text-white rounded-0">Visitor count: ${applicationScope.visitors}</li>
     </ul>
     <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-5 my-2 my-md-0 osahan-navbar-search">
@@ -52,6 +49,9 @@
                         <a class="dropdown-item" href="<c:url value='/changePass'/>">
                             <i class="fa-solid fa-lock"></i>&nbsp; Change password
                         </a>
+                        <a class="dropdown-item" href="<c:url value='/forgotPass'/>">
+                            <i class="fa-solid fa-envelope"></i> Forgot password
+                        </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<c:url value='/logout'/>" data-toggle="modal"
                            data-target="#logoutModal">
@@ -59,9 +59,6 @@
                         </a>
                     </c:when>
                     <c:otherwise>
-                        <a class="dropdown-item" href="<c:url value='/forgotPass'/>">
-                            <i class="fa-solid fa-envelope"></i> Forgot password
-                        </a>
                         <a class="dropdown-item" href="<c:url value='/register'/>">
                             <i class="fa-solid fa-fingerprint"></i> Register
                         </a>
