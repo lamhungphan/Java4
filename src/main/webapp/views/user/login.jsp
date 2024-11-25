@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@include file="/common/taglib.jsp" %>
@@ -14,7 +13,7 @@
     <div class="container mt-5 col-4 align-content-center">
         <h3>Login</h3>
         <c:if test="${not empty error}">
-            <p class="error">${error}</p>
+            <p class="error" style="color: red">${error}</p>
         </c:if>
         <form action="login" method="post">
             <div class="mb-3">

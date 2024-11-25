@@ -43,7 +43,7 @@ public class AuthFilter implements Filter {
 
             // Nếu không phải admin, trả lỗi 403
             if (!isAdmin) {
-                httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "You do not have permission to access this resource.");
+                httpResponse.sendError(HttpServletResponse.SC_FORBIDDEN, "You do not have permission to access this resource");
                 return;
             }
         }

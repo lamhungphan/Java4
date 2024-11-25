@@ -22,6 +22,7 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet(urlPatterns = {"/index", "/favorite", "/history"})
 public class HomeServlet extends HttpServlet {
+    private static final int VIDEO_MAX_PAGE_SIZE = 2;
     private VideoService videoService = new VideoServiceImpl();
     private HistoryService historyService = new HistoryServiceImpl();
 
@@ -42,7 +43,20 @@ public class HomeServlet extends HttpServlet {
     }
 
     private void doGetIndex(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Video> videos = videoService.findAll();
+        List<Video> countVideo = videoService.findAll();
+        int maxPage = (int) Math.ceil(countVideo.size() / (double) VIDEO_MAX_PAGE_SIZE);
+        req.setAttribute("maxPage", maxPage);
+        String pageNumber = req.getParameter("page");
+
+        List<Video> videos;
+        if (pageNumber == null || maxPage < Integer.valueOf(pageNumber)) {
+            videos = videoService.findAll(1, VIDEO_MAX_PAGE_SIZE);
+            req.setAttribute("currentPage", 1);
+        } else {
+            videos = videoService.findAll(Integer.parseInt(pageNumber), VIDEO_MAX_PAGE_SIZE);
+            req.setAttribute("currentPage", Integer.valueOf(pageNumber));
+        }
+
         req.setAttribute("videos", videos);
         req.getRequestDispatcher("/views/user/index.jsp").forward(req, resp);
     }

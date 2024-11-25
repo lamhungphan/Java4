@@ -124,7 +124,7 @@ public class UserServlet extends HttpServlet {
             session.setAttribute("role", user.getIsAdmin());
             resp.sendRedirect("login");
         } else {
-            req.setAttribute("error", "Registration failed. Try again.");
+            req.setAttribute("error", "Registration failed. Try again ");
             resp.sendRedirect("register");
         }
     }
