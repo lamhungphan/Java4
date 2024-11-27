@@ -5,7 +5,9 @@ import com.fpoly.java4_youtube.dao.impl.UserDaoImpl;
 import com.fpoly.java4_youtube.entity.User;
 import com.fpoly.java4_youtube.service.UserService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserServiceImpl implements UserService {
     private UserDao dao;
@@ -76,5 +78,12 @@ public class UserServiceImpl implements UserService {
         User user = dao.findByUserName(username);
         user.setIsActive(Boolean.FALSE);
         return dao.update(user);
+    }
+
+    @Override
+    public List<User> findUsersLikedVideoByVideoHref(String href) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("videoHref", href);
+        return dao.findUsersLikedVideoByVideoHref(params);
     }
 }

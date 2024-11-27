@@ -3,6 +3,7 @@ package com.fpoly.java4_youtube.dao.impl;
 import com.fpoly.java4_youtube.dao.AbstractDao;
 import com.fpoly.java4_youtube.dao.StatsDao;
 import com.fpoly.java4_youtube.dto.VideoLikedInfo;
+import com.fpoly.java4_youtube.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -23,4 +23,5 @@ public interface UserService {
     User update(User entity);
 
     User delete(String username);
+    List<User> findUsersLikedVideoByVideoHref(String href);
 }

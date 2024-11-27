@@ -1,7 +1,9 @@
 package com.fpoly.java4_youtube.dao;
 
 import com.fpoly.java4_youtube.entity.User;
+
 import java.util.List;
+import java.util.Map;
 
 public interface UserDao {
     User findById(Integer id);
@@ -21,4 +23,6 @@ public interface UserDao {
     User update(User entity);
 
     User delete(User entity);
+
+    List<User> findUsersLikedVideoByVideoHref(Map<String, Object> params);
 }

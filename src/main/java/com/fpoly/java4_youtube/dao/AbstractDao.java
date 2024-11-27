@@ -1,9 +1,12 @@
 package com.fpoly.java4_youtube.dao;
 
 import java.util.List;
+import java.util.Map;
+
 import com.fpoly.java4_youtube.util.JpaUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+import jakarta.persistence.StoredProcedureQuery;
 import jakarta.persistence.TypedQuery;
 
 
@@ -52,7 +55,7 @@ public class AbstractDao<EntityType> {
     public EntityType findOne(Class<EntityType> clazz, String sql, Object... params) {
         TypedQuery<EntityType> query = entityManager.createQuery(sql, clazz);
         for (int i = 0; i < params.length; i++) {
-            query.setParameter(i +1, params[i]);
+            query.setParameter(i + 1, params[i]);
         }
         List<EntityType> result = query.getResultList();
         if (result.isEmpty()) {
@@ -70,7 +73,7 @@ public class AbstractDao<EntityType> {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Object[]> findManyByNativeQuery( String sql, Object... params) {
+    public List<Object[]> findManyByNativeQuery(String sql, Object... params) {
         Query query = entityManager.createNativeQuery(sql);
         for (int i = 0; i < params.length; i++) {
             query.setParameter(i, params[i]);
@@ -118,5 +121,12 @@ public class AbstractDao<EntityType> {
             System.out.println("Cannot delete entity" + entity.getClass().getSimpleName());
             throw new RuntimeException(e);
         }
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<EntityType> callStored(String namedStored, Map<String, Object> params) {
+        StoredProcedureQuery query = entityManager.createNamedStoredProcedureQuery(namedStored);
+        params.forEach((key, value) -> query.setParameter(key, value));
+        return (List<EntityType>) query.getResultList();
     }
 }

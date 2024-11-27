@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="container">
-    <h1 class="mt-3">Dashboard</h1>
     <div class="container-fluid">
         <div class="row  mt-3">
 
@@ -54,7 +53,8 @@
                 </div>
             </div>
         </div>
-        <div class="card-body">
+        <h3 class="mt-3">Video</h3>
+        <div class="card-body mb-3 mt-3">
             <table id="example2" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -87,5 +87,33 @@
                 </ul>
             </nav>
         </div>
+        <h3 class="mt-3">Favorite Info</h3>
+        <div class="card-body mb-3 mt-3">
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                   List video
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                </ul>
+            </div>
+            <table id="example" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach items="${videos}" var="item">
+                    <tr>
+                        <td>${item.title}</td>
+                        <td><a href="video?action=watch&id=${item.href}">${item.href}</a></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+
     </div>
 </div>

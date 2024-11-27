@@ -22,7 +22,7 @@ import jakarta.servlet.http.HttpSession;
 
 @WebServlet(urlPatterns = {"/index", "/favorite", "/history"})
 public class HomeServlet extends HttpServlet {
-    private static final int VIDEO_MAX_PAGE_SIZE = 2;
+    private static final int VIDEO_MAX_PAGE_SIZE = 9;
     private VideoService videoService = new VideoServiceImpl();
     private HistoryService historyService = new HistoryServiceImpl();
 
