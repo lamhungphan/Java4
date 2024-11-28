@@ -6,7 +6,7 @@
 <!-- Favicon Icon -->
 <link rel="icon" type="image/png" href="<c:url value='/templates/user/img/netflix-icon.png'/>">
 
-<!-- CSS Links -->
+<!-- ** CSS Links ** -->
 <!-- Bootstrap 4.5.2 CSS (from StackPath CDN) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
@@ -17,23 +17,17 @@
 <link href="<c:url value='/templates/user/vendor/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 
 <!-- Bootstrap 5.3.3 CSS (from jsDelivr CDN with integrity check) -->
+<%--Dashboard--%>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-<!-- JavaScript Links -->
+<!-- ** JavaScript Links ** -->
 <!-- jQuery 3.5.1 (from jQuery CDN) -->
+<%--Avatar dropdown--%>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-<!-- Bootstrap 5.3.3 JavaScript (from jsDelivr CDN with integrity check) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-<!-- SweetAlert2 (for pop-up alerts) -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-<!-- FontAwesome JS (for using Font Awesome icons) -->
-<script src="https://kit.fontawesome.com/2b390fd234.js" crossorigin="anonymous"></script>
 
 <!-- Bootstrap 4.5.2 JavaScript (from StackPath CDN) -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
 <!-- DataTables JavaScript (for data table functionality) -->
-<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">

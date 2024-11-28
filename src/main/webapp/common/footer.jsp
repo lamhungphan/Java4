@@ -25,12 +25,24 @@
 </div>
 </div>
 
-<!-- Bootstrap core JavaScript-->
-<script src="<%= request.getContextPath() %>/templates/user/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ** JavaScript Links ** -->
+<!-- jQuery (latest version for compatibility with DataTables and plugins) -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
-<!-- jQuery and Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap 5.3.3 JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<!-- DataTables JavaScript -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+
+<!-- SweetAlert2 (for pop-up alerts) -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- FontAwesome JS -->
+<script src="https://kit.fontawesome.com/2b390fd234.js" crossorigin="anonymous"></script>
+
 <script>
     $(document).ready(function () {
         $('.dropdown-toggle').dropdown();

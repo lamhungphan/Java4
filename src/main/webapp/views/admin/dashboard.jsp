@@ -68,25 +68,25 @@
                     <c:forEach items="${videos}" var="item">
                         <tr>
                             <td>${item.title}</td>
-                            <td><a href="video?action=watch&id=${item.href}">${item.href}</a></td>
+                            <td><a href="video?action=watch&id=${item.href}" target="_blank">${item.href}</a></td>
                             <td>${item.totalLike}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-end">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
-                </nav>
+<%--                <nav aria-label="Page navigation example">--%>
+<%--                    <ul class="pagination justify-content-end">--%>
+<%--                        <li class="page-item disabled">--%>
+<%--                            <a class="page-link" href="#" tabindex="-1">Previous</a>--%>
+<%--                        </li>--%>
+<%--                        <li class="page-item"><a class="page-link" href="#">1</a></li>--%>
+<%--                        <li class="page-item"><a class="page-link" href="#">2</a></li>--%>
+<%--                        <li class="page-item"><a class="page-link" href="#">3</a></li>--%>
+<%--                        <li class="page-item">--%>
+<%--                            <a class="page-link" href="#">Next</a>--%>
+<%--                        </li>--%>
+<%--                    </ul>--%>
+<%--                </nav>--%>
             </div>
             <h3 class="mt-3">Favorite Info</h3>
             <div class="card-body mb-3 mt-3">
@@ -117,3 +117,4 @@
         </div>
     </div>
 </div>
+<script src="<c:url value="/templates/admin/script.js"/>"></script>

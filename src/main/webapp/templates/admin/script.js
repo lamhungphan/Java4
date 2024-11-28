@@ -28,17 +28,18 @@ $(document).ready(function () {
     });
 
     // Khởi tạo DataTable cho bảng nếu chưa có
-    $('#example').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
+    $('#example2').DataTable({
+        "paging": true, // Bật phân trang
+        "lengthChange": false, // Tắt tính năng thay đổi số dòng hiển thị
+        "searching": true, // Bật tính năng tìm kiếm
+        "ordering": true, // Bật sắp xếp cột
+        "info": true, // Hiển thị thông tin về số dòng
+        "autoWidth": false, // Không tự động điều chỉnh chiều rộng cột
+        "responsive": true, // Bật chế độ phản hồi
         "columns": [
-            { "data": "username" },
-            { "data": "email" }
+            { "data": "title" },
+            { "data": "link" },
+            { "data": "totalLike" }
         ]
     });
 });

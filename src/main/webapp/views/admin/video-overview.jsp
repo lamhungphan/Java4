@@ -50,7 +50,7 @@
 
                     <h3 class="mt-3">List Video</h3>
                     <div class="card-body mb-3 mt-3">
-                        <table id="example2" class="table table-bordered table-striped">
+                        <table id="example" class="table table-bordered table-striped">
                             <thead>
                             <tr>
                                 <th>Title</th>
@@ -71,7 +71,7 @@
                                     </td>
                                     <td>
                                         <button class="btn btn-success">Edit</button>
-                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-danger" onclick="deleteVideo('${item.href}')">Delete</button>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -97,6 +97,10 @@
     </div>
 </div>
 <%@include file="/common/footer.jsp" %>
-<script src="<c:url value="/templates/admin/script.js"/>"></script>
+<script>
+    function deleteVideo(href){
+        alert(href);
+    }
+</script>
 </body>
 </html>
