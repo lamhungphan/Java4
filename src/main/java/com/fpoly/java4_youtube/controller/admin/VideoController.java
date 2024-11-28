@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(urlPatterns = {"/admin/video"}, name = "VideoControllerOfAdmin")
@@ -33,6 +32,9 @@ public class VideoController extends HttpServlet {
                     break;
                 case "delete":
                     doGetDelete(req, resp);
+                    break;
+                case "add":
+                    doGetAdd(req, resp);
                     break;
             }
         } else {
@@ -56,5 +58,9 @@ public class VideoController extends HttpServlet {
         } else {
             resp.setStatus(400);
         }
+    }
+
+    protected void doGetAdd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.getRequestDispatcher("/views/admin/video-edit.jsp").forward(req, resp);
     }
 }

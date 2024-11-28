@@ -71,25 +71,13 @@
                                     </td>
                                     <td>
                                         <button class="btn btn-success">Edit</button>
-                                        <button class="btn btn-danger" onclick="deleteVideo('${item.href}')">Delete</button>
+                                        <button class="btn btn-danger" onclick="deleteVideo('${item.href}')">Delete
+                                        </button>
                                     </td>
                                 </tr>
                             </c:forEach>
                             </tbody>
                         </table>
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-end">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
                     </div>
                 </div>
             </div>
@@ -97,10 +85,17 @@
     </div>
 </div>
 <%@include file="/common/footer.jsp" %>
+<script src="<c:url value="/templates/admin/script.js"/>"></script>
 <script>
-    function deleteVideo(href){
-        alert(href);
-    }
+    function deleteVideo(href) {
+        $.ajax({
+            url: '/Java4_Youtube_war/admin/video?action=delete&href=' + href
+        }).then(function (data) {
+            window.location.href = "http://localhost:8080/Java4_Youtube_war/admin/video?action=view"
+        }).fail(function (error) {
+            alert("Delete fail, please try again!");
+        });
+    };
 </script>
 </body>
 </html>

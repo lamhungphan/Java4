@@ -15,7 +15,7 @@
                     <span aria-hidden="true">x</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" href="<c:url value='/logout'/>">Logout</a>
@@ -41,7 +41,7 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- FontAwesome JS -->
-<script src="https://kit.fontawesome.com/2b390fd234.js" crossorigin="anonymous"></script>
+<%--<script src="https://kit.fontawesome.com/2b390fd234.js" crossorigin="anonymous"></script>--%>
 
 <script>
     $(document).ready(function () {

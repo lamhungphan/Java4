@@ -10,9 +10,6 @@
 <!-- Bootstrap 4.5.2 CSS (from StackPath CDN) -->
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Font Awesome 5.15.4 CSS (from CDNJS) -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
 <!-- Bootstrap 4 core CSS (Local file from server template) -->
 <link href="<c:url value='/templates/user/vendor/bootstrap/css/bootstrap.min.css'/>" rel="stylesheet">
 
@@ -20,14 +17,21 @@
 <%--Dashboard--%>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+<!-- DataTables (for data table functionality) -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">
+
+<!-- Font Awesome 5.15.4 CSS (from CDNJS) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
 <!-- ** JavaScript Links ** -->
 <!-- jQuery 3.5.1 (from jQuery CDN) -->
 <%--Avatar dropdown--%>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
+<!-- FontAwesome JS -->
+<script src="https://kit.fontawesome.com/2b390fd234.js" crossorigin="anonymous"></script>
+
 <!-- Bootstrap 4.5.2 JavaScript (from StackPath CDN) -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-<!-- DataTables JavaScript (for data table functionality) -->
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.dataTables.min.css">

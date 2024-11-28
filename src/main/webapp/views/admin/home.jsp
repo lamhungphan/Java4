@@ -29,9 +29,8 @@
                 <i class="fa-solid fa-photo-film"></i> Videos
             </a>
             <ul class="dropdown-menu w-100 p-0 m-0 rounded-0">
-                <li><a class="dropdown-item w-100 p-2" href="<c:url value='/admin/video?action=view'/>">Manage
-                    Videos</a></li>
-                <li><a class="dropdown-item w-100 p-2" href="<c:url value='/admin/video?action=add'/>">Video Edit</a>
+                <li><a class="dropdown-item w-100 p-2" href="<c:url value='/admin/video?action=view'/>">List Video</a></li>
+                <li><a class="dropdown-item w-100 p-2" href="<c:url value='/admin/video?action=add'/>">Edit Video</a>
                 </li>
             </ul>
         </li>

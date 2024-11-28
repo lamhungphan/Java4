@@ -33,7 +33,7 @@
                             <div class="video-card">
                                 <div class="video-card-image">
                                     <a href="<c:url value='/video?action=watch&id=${video.href}' />">
-                                        <img class="img-fluid" src="${pageContext.request.contextPath}/templates/user/img/shape-of-you.jpg" alt=""/>
+                                        <img class="img-fluid" src="${video.poster}" alt=""/>
                                     </a>
                                 </div>
                                 <div class="video-card-body">
