@@ -5,9 +5,7 @@
 <html>
 <head>
     <%@include file="/common/head.jsp" %>
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
-    <title>Online Entertainment</title>
+    <title>Admin page</title>
 </head>
 <body>
 <%@include file="/common/header.jsp" %>
@@ -31,14 +29,16 @@
                 <i class="fa-solid fa-photo-film"></i> Videos
             </a>
             <ul class="dropdown-menu w-100 p-0 m-0 rounded-0">
-                <li><a class="dropdown-item w-100 p-2" href="#">Manage Videos</a></li>
-                <li><a class="dropdown-item w-100 p-2" href="#">Video Detail</a></li>
+                <li><a class="dropdown-item w-100 p-2" href="<c:url value='/admin/video?action=view'/>">Manage
+                    Videos</a></li>
+                <li><a class="dropdown-item w-100 p-2" href="<c:url value='/admin/video?action=add'/>">Video Edit</a>
+                </li>
             </ul>
         </li>
         <li class="nav-item w-100">
             <a class="nav-link text-white w-100 p-3 rounded-0"
                href="<c:url value='/admin/favorite'/> ">
-                <i class="fa-solid fa-heart"></i> Favorites
+                <i class="fa-solid fa-heart"></i> Favorite
             </a>
         </li>
     </div>
@@ -51,18 +51,6 @@
 </div>
 
 <%@include file="/common/footer.jsp" %>
-<script>
-    $(function () {
-        $("#example2").DataTable({
-            "paging": true, // Kích hoạt phân trang
-            "lengthChange": false, // Không cho phép thay đổi số lượng bản ghi hiển thị
-            "searching": false,
-            "ordering": true,
-            "info": true, // Hiển thị thông tin tổng số trang, bản ghi
-            "autoWidth": false,
-            "responsive": true
-        });
-    });
-</script>
+<script src="<c:url value="/templates/admin/script.js"/>"></script>
 </body>
 </html>

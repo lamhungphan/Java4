@@ -102,12 +102,16 @@ INSERT INTO history (userId, videoId, isLiked, likedDate) VALUES
 
 -- Store Procedure
 DELIMITER $$
-
+-- DROP PROCEDURE IF EXISTS sp_selectUsersLikedVideoByVideoHref;
 CREATE PROCEDURE sp_selectUsersLikedVideoByVideoHref(IN videoHref VARCHAR(50))
 BEGIN
     SELECT
-        u.username,
-     u.email
+		u.id,
+     u.username,
+     u.password,
+     u.email,
+     u.isAdmin,
+     u.isActive
          FROM
         video v
         LEFT JOIN history h ON v.id = h.videoId
