@@ -42,6 +42,23 @@ public class VideoController extends HttpServlet {
         }
     }
 
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
+        User currentUser = (User) session.getAttribute(SessionAttribute.CURRENT_USER);
+
+        if (currentUser != null && currentUser.getIsAdmin() == Boolean.TRUE) {
+            String action = req.getParameter("action");
+            switch (action) {
+                case "add":
+                    doPostAdd(req, resp);
+                    break;
+            }
+        } else {
+            resp.sendRedirect("index");
+        }
+    }
+
     protected void doGetOverview(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Video> videoList = videoService.findAll();
         req.setAttribute("videoList", videoList);
@@ -62,5 +79,27 @@ public class VideoController extends HttpServlet {
 
     protected void doGetAdd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.getRequestDispatcher("/views/admin/video-edit.jsp").forward(req, resp);
+    }
+
+    protected void doPostAdd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("application/json");
+        String title = req.getParameter("title");
+        String href = req.getParameter("href");
+        String description = req.getParameter("description");
+        String poster = req.getParameter("poster");
+
+        Video video = new Video();
+        video.setTitle(title);
+        video.setHref(href);
+        video.setDescription(description);
+        video.setPoster(poster);
+
+        Video videoReturn = videoService.create(video);
+
+        if (videoReturn != null) {
+            resp.setStatus(204);
+        } else {
+            resp.setStatus(400);
+        }
     }
 }

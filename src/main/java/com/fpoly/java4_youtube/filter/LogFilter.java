@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Timestamp;
 
-@WebFilter("/*")
+@WebFilter("")
 public class LogFilter implements Filter {
     private LogService logService = new LogServiceImpl();
 

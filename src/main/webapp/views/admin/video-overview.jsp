@@ -84,7 +84,7 @@
         </main>
     </div>
 </div>
-<%@include file="/common/footer.jsp" %>
+
 <script src="<c:url value="/templates/admin/script.js"/>"></script>
 <script>
     function deleteVideo(href) {
@@ -97,5 +97,6 @@
         });
     };
 </script>
+<%@include file="/common/footer.jsp" %>
 </body>
 </html>
