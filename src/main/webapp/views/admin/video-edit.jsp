@@ -10,33 +10,37 @@
 <body>
 <%@include file="/common/header.jsp" %>
 <div class="container mt-5">
-    <%--    <h3 class="text-center">Add/Edit Video</h3>--%>
+    <h3 class="text-center">Add/Edit Video</h3>
     <div class="card mt-4">
         <div class="card-header bg-primary text-white" id="message">Add video</div>
         <div class="card-body">
             <form enctype="application/x-www-form-urlencoded">
                 <div class="form-group">
                     <label for="title">Title</label>
-                    <input type="text" id="title" class="form-control" placeholder="Enter video title">
+                    <input type="text" id="title" value="${video != null ? video.title : '' }" class="form-control"
+                           placeholder="Enter video title">
                 </div>
                 <div class="form-group">
                     <label for="href">Href</label>
-                    <input type="text" id="href" class="form-control" placeholder="Enter video link">
+                    <input type="text" id="href" value="${video != null ? video.href : '' }" class="form-control" placeholder="Enter video link">
                 </div>
                 <div class="form-group">
                     <label for="description">Description</label>
-                    <textarea id="description" class="form-control" rows="3"
+                    <textarea id="description" value="${video != null ? video.description : '' }" class="form-control"
+                              rows="3"
                               placeholder="Enter video description"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="poster">Poster</label>
-                    <input type="text" id="poster" class="form-control" placeholder="Enter poster URL">
+                    <input type="text" id="poster" value="${video != null ? video.poster : '' }" class="form-control"
+                           placeholder="Enter poster URL">
+                    <input type="hidden" id="isEdit" value="${isEdit}" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="preview">Preview</label>
                     <div class="border p-3" id="preview"
                          style="height: 150px; display: flex; align-items: center; justify-content: center;">
-                        <img src="" alt="Preview Image" id="imgPreview"
+                        <img src="${video != null ? video.poster : '' }" alt="Preview Image" id="imgPreview"
                              style="max-height: 100%; max-width: 100%;">
                     </div>
                 </div>
@@ -78,20 +82,33 @@
         $('#href').val(hrefOrigin);
         $('#description').val(descriptionOrigin);
         $('#poster').val(posterOrigin);
+
+        if (posterOrigin.length > 0) {
+            $('#imgPreview').attr('src', posterOrigin);
+        }
     });
 
     $('#submitBtn').click(function () {
         $('#message').text('');
 
+        var url;
+        var isEdit = $('#isEdit').val();
+        if (isEdit == 'true') {
+            url: '/Java4_Youtube_war/admin/video?action=edit&href=' + hrefOrigin;
+        } else {
+            url: '/Java4_Youtube_war/admin/video?action=add';
+        }
+
         var formData = {
+            'hrefOrigin': hrefOrigin,
             'title': $('#title').val(),
-            'href': $('#href').val(),
+            'newHref': $('#href').val(),
             'description': $('#description').val(),
             'poster': $('#poster').val(),
         }
 
         $.ajax({
-            url: '/Java4_Youtube_war/admin/video?action=add',
+            url: url,
             type: 'POST',
             data: formData
         }).then(function (data) {

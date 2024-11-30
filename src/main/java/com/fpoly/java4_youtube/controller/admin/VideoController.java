@@ -34,7 +34,12 @@ public class VideoController extends HttpServlet {
                     doGetDelete(req, resp);
                     break;
                 case "add":
+                    req.setAttribute("isEdit",false);
                     doGetAdd(req, resp);
+                    break;
+                case "edit":
+                    req.setAttribute("isEdit",true);
+                    doGetEdit(req, resp);
                     break;
             }
         } else {
@@ -52,6 +57,9 @@ public class VideoController extends HttpServlet {
             switch (action) {
                 case "add":
                     doPostAdd(req, resp);
+                    break;
+                case "edit":
+                    doPostEdit(req, resp);
                     break;
             }
         } else {
@@ -81,6 +89,13 @@ public class VideoController extends HttpServlet {
         req.getRequestDispatcher("/views/admin/video-edit.jsp").forward(req, resp);
     }
 
+    protected void doGetEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String href = req.getParameter("href");
+        Video video = videoService.finByHref(href);
+        req.setAttribute("video", video);
+        req.getRequestDispatcher("/views/admin/video-edit.jsp").forward(req, resp);
+    }
+
     protected void doPostAdd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("application/json");
         String title = req.getParameter("title");
@@ -95,6 +110,29 @@ public class VideoController extends HttpServlet {
         video.setPoster(poster);
 
         Video videoReturn = videoService.create(video);
+
+        if (videoReturn != null) {
+            resp.setStatus(204);
+        } else {
+            resp.setStatus(400);
+        }
+    }
+
+    protected void doPostEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setContentType("application/json");
+        String title = req.getParameter("title");
+        String href = req.getParameter("newHref");
+        String description = req.getParameter("description");
+        String poster = req.getParameter("poster");
+        String hrefOrigin = req.getParameter("hrefOrigin");
+
+        Video video = videoService.finByHref(hrefOrigin);
+        video.setTitle(title);
+        video.setHref(href);
+        video.setDescription(description);
+        video.setPoster(poster);
+
+        Video videoReturn = videoService.update(video);
 
         if (videoReturn != null) {
             resp.setStatus(204);

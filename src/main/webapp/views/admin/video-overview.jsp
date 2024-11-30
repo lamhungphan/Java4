@@ -44,10 +44,8 @@
     </div>
     <div class="col-md-10 p-0">
         <main class="pb-2" style="min-height: 93vh">
-
             <div class="container">
                 <div class="container-fluid">
-
                     <h3 class="mt-3">List Video</h3>
                     <div class="card-body mb-3 mt-3">
                         <table id="example" class="table table-bordered table-striped">
@@ -70,7 +68,8 @@
                                         <img src="${item.poster}" width="120px"/>
                                     </td>
                                     <td>
-                                        <button class="btn btn-success">Edit</button>
+                                        <a href="<c:url value='/admin/video?action=edit&href=${item.href}'/>"
+                                           class="btn btn-success">Edit</a>
                                         <button class="btn btn-danger" onclick="deleteVideo('${item.href}')">Delete
                                         </button>
                                     </td>
