@@ -6,6 +6,55 @@
 <head>
     <%@include file="/common/head.jsp" %>
     <title>Online Entertainment</title>
+    <script>
+        // Function to set a cookie with a specific expiration time
+        function setCookie(name, value, days) {
+            var expires = "";
+            if (days) {
+                var date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); // Set expiration
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+
+        // Function to get a cookie by name
+        function getCookie(name) {
+            var nameEQ = name + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // When the page loads, check if the "remember me" cookie exists
+        window.onload = function() {
+            var username = getCookie("username");
+            var password = getCookie("password");
+            if (username) {
+                document.getElementById("username").value = username;
+                document.getElementById("remember").checked = true;
+            }
+            if (password) {
+                document.getElementById("password").value = password;
+            }
+        };
+
+        // Save the username and password in cookies when the form is submitted
+        document.querySelector("form").onsubmit = function() {
+            if (document.getElementById("remember").checked) {
+                setCookie("username", document.getElementById("username").value, 7); // Store for 7 days
+                setCookie("password", document.getElementById("password").value, 7); // Store for 7 days
+            } else {
+                // If "Remember me" is unchecked, delete the cookies
+                setCookie("username", "", -1);
+                setCookie("password", "", -1);
+            }
+        };
+    </script>
 </head>
 <body>
 <%@include file="/common/header.jsp" %>

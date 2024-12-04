@@ -9,7 +9,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.List;
@@ -77,7 +76,7 @@ public class UserController extends HttpServlet {
         String username = req.getParameter("fullname");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
-//        boolean isAdmin = Boolean.parseBoolean(req.getParameter("isAdmin"));
+        boolean isAdmin = Boolean.parseBoolean(req.getParameter("isAdmin"));
 
         User user = new User();
         user.setUsername(username);

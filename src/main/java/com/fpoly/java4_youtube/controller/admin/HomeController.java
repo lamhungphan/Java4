@@ -56,29 +56,12 @@ public class HomeController extends HttpServlet {
     }
 
     private void doGetFavorite(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        resp.setCharacterEncoding("UTF-8");
-        resp.setContentType("application/json");
-
-        // Lấy tham số href
         String videoHref = req.getParameter("href");
         if (videoHref == null || videoHref.isEmpty()) {
-            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST); // Lỗi 400: Bad Request
-            out.print("{\"error\": \"Missing or invalid href parameter\"}");
-            out.flush();
-            return;
-        }
-
-        List<User> users = userService.findUsersLikedVideoByVideoHref(videoHref);
-
-        if (users.isEmpty()) {
-            resp.setStatus(400);
+            req.setAttribute("error", "Missing or invalid href parameter");
         } else {
-            ObjectMapper mapper = new ObjectMapper();
-            String dataResponse = mapper.writeValueAsString(users); // Convert danh sách thành JSON
-            resp.setStatus(200);
-            out.print(dataResponse);
-            out.flush();
+            List<User> users = userService.findUsersLikedVideoByVideoHref(videoHref);
+            req.setAttribute("users", users);
         }
         req.setAttribute("view", "/views/admin/favorite.jsp");
     }

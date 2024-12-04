@@ -30,11 +30,6 @@ public class VideoServlet extends HttpServlet {
         String href = req.getParameter("id");
         HttpSession session = req.getSession();
 
-        if (actionParam == null || href == null) {
-            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing required parameters");
-            return;
-        }
-
         switch (actionParam) {
             case "watch":
                 doGetWatch(session, href, req, resp);
