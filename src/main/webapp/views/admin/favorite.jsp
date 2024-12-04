@@ -15,7 +15,7 @@
                         </c:forEach>
                     </ul>
                 </div>
-                <table id="example3" class="table table-bordered table-striped">
+                <table id="example" class="table table-bordered table-striped">
                     <thead>
                     <tr>
                         <th>Username</th>

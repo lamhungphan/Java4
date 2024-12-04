@@ -4,8 +4,10 @@ import com.fpoly.java4_youtube.constant.SessionAttribute;
 import com.fpoly.java4_youtube.entity.History;
 import com.fpoly.java4_youtube.entity.User;
 import com.fpoly.java4_youtube.entity.Video;
+import com.fpoly.java4_youtube.service.EmailService;
 import com.fpoly.java4_youtube.service.HistoryService;
 import com.fpoly.java4_youtube.service.VideoService;
+import com.fpoly.java4_youtube.service.impl.EmailServiceImpl;
 import com.fpoly.java4_youtube.service.impl.HistoryServiceImpl;
 import com.fpoly.java4_youtube.service.impl.VideoServiceImpl;
 import jakarta.servlet.ServletException;
@@ -40,6 +42,9 @@ public class VideoServlet extends HttpServlet {
             case "like":
                 doGetLike(session, href, req, resp);
                 break;
+            case "share":
+                doGetShare(req, resp);
+                break;
         }
     }
 
@@ -65,8 +70,50 @@ public class VideoServlet extends HttpServlet {
         }
     }
 
+    private void doGetShare(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String href = req.getParameter("id");
+        if (href == null) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing video id");
+            return;
+        }
+        Video video = videoService.finByHref(href);
+        if (video == null) {
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Video not found");
+            return;
+        }
+        req.setAttribute("video", video);
+        req.getRequestDispatcher("/views/user/video-share.jsp").forward(req, resp);
+    }
+
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        String action = req.getParameter("action");
+        if ("share".equals(action)) {
+            handleShare(req, resp);
+        }
+    }
+
+    private void handleShare(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String email = req.getParameter("email");
+        String videoId = req.getParameter("id");
+        if (email == null || videoId == null) {
+            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing email or video id");
+            return;
+        }
+
+        Video video = videoService.finByHref(videoId);
+        if (video == null) {
+            resp.sendError(HttpServletResponse.SC_NOT_FOUND, "Video not found");
+            return;
+        }
+
+        // Sử dụng EmailService để gửi email
+        EmailService emailService = new EmailServiceImpl();
+        User recipient = new User();
+        recipient.setEmail(email);
+        recipient.setUsername("User");
+        emailService.sendEmail(getServletContext(), recipient, "share-video");
+
+        resp.sendRedirect(req.getContextPath() + "/video?action=watch&id=" + videoId);
     }
 }

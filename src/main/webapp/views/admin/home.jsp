@@ -17,11 +17,17 @@
                 <i class="fa-solid fa-house"></i> Dashboard
             </a>
         </li>
-        <li class="nav-item w-100">
-            <a class="nav-link text-white w-100 p-3 rounded-0"
-               href="#">
+        <li class="nav-item dropdown w-100">
+            <a class="nav-link text-white w-100 p-3 dropdown-toggle rounded-0"
+<%--               href="<c:url value='/admin/user'/>">--%>
+               data-bs-toggle="dropdown" href="#">
                 <i class="fa-solid fa-users"></i> Users
             </a>
+            <ul class="dropdown-menu w-100 p-0 m-0 rounded-0">
+                <li><a class="dropdown-item w-100 p-2" href="<c:url value='/admin/user?action=view'/>">List User</a></li>
+                <li><a class="dropdown-item w-100 p-2" href="<c:url value='/admin/user?action=add'/>">Edit User</a>
+                </li>
+            </ul>
         </li>
         <li class="nav-item dropdown w-100">
             <a class="nav-link text-white rounded-0 dropdown-toggle w-100 p-3"

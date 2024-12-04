@@ -28,6 +28,12 @@ public class EmailServiceImpl implements EmailService {
                     content = "Hi " + recipient.getUsername() + ", here is your new password " +
                             "\n" + recipient.getPassword();
                     break;
+                case "share-video":
+                    subject = "Check out this video!";
+                    content = "Hi, someone shared a video with you: " +
+                            "\nTitle: " + recipient.getUsername() +
+                            "\nLink: https://www.youtube.com/watch?v=";
+                    break;
                 default:
                     subject = "Online Entertainment";
                     content = "this is just a test email";

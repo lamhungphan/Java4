@@ -31,7 +31,6 @@ public class HomeController extends HttpServlet {
         User currentUser = (User) session.getAttribute(SessionAttribute.CURRENT_USER);
 
         if (currentUser != null && currentUser.getIsAdmin() == Boolean.TRUE) {
-
             switch (path) {
                 case "/admin":
                     doGetIndex(req, resp);

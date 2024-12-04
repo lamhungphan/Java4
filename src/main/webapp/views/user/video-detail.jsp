@@ -31,7 +31,9 @@
                                 </c:choose>
                             </a>
                         </button>
-                        <button class="btn-primary" share="shareBtn">Share</button>
+                        <button class="btn-primary" id="shareBtn">
+                            <a href="${pageContext.request.contextPath}/video?action=share&id=${video.href}">Share</a>
+                        </button>
                     </c:if>
                 </div>
                 <div class="single-video-info-content box mb-3">
@@ -173,6 +175,9 @@
         });
     });
 
+    $('#likeBtn').click(function () {
+
+    });
 </script>
 </body>
 </html>
